@@ -12,7 +12,7 @@ const projects = [
     tech: "React, Vite, FastAPI"
   }
 ]
-
+  
 function Projects() {
   return (
     <div style={{ padding: "80px" }}>
