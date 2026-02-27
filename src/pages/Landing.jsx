@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion";
 import plane from "/home/fahmi/frontend/src/assets/plane.svg";
 import cloud from "/home/fahmi/frontend/src/assets/cloud.svg";
+import cloud2 from "/home/fahmi/frontend/src/assets/cloudwhite.svg";
 
 function Landing() {
   const navigate = useNavigate();
@@ -10,7 +11,20 @@ function Landing() {
     <div className="landing">
 
       <motion.img
-        src={cloud}
+        src={plane}
+        className="plane"
+        initial={{ x: "200vw" }}
+        animate={{ x: "-180vw" }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+          rotate: 90,
+        }}
+      />
+
+      <motion.img
+        src={cloud2}
         className="cloud3"
         initial={{ x: "-90vw" }}
         animate={{ x: "180vw" }}
@@ -22,7 +36,7 @@ function Landing() {
       />
 
       <motion.img
-        src={cloud}
+        src={cloud2}
         className="cloud2"
         initial={{ x: "-90vw" }}
         animate={{ x: "180vw" }}
@@ -34,7 +48,7 @@ function Landing() {
       />
 
      <motion.img
-        src={cloud}
+        src={cloud2}
         className="cloud1"
           initial={{ x: "-70vw"}}
           animate={{ x: "100vw" }}
