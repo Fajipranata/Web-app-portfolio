@@ -62,7 +62,7 @@ function ChatBox() {
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Ask about Fahmi..."
+            placeholder="Ask anything about me..."
         />
         <button type="submit">
             Send

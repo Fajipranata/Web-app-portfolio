@@ -95,7 +95,7 @@ function App() {
               exit="exit"
               custom={{ axis, direction }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
-              style={{ height: "100%" }}
+              style={{ height: "100%", overflowY: "auto" }}
             >
             <Routes location={location}>
               <Route path="/" element={<Landing />} />
