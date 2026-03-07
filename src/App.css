@@ -388,11 +388,12 @@ h1 {
 /*LOGIN PAGE STYLING*/
 /* Wrapper (full screen center) */
 .login-wrapper {
-  min-height: 100vh;
+  position: relative;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  overflow: hidden;
 }
 
 /* Card container */
@@ -466,7 +467,7 @@ h1 {
   margin: 40px auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
   background: white;
@@ -514,6 +515,15 @@ h1 {
   color: white;
   cursor: pointer;
 }
+
+.chat-warning {
+  margin-top: 50px;
+}
+
+.patient-warning {
+  margin-bottom: 18px;
+}
+
 /*CHATBOX STYLING*/
 
 /*PROJECT-PAGE STYLING*/
@@ -586,3 +596,4 @@ h1 {
   margin-bottom: 18px;
 }
 /*ABOUT-PAGE STYLING*/
+

@@ -6,6 +6,7 @@ import ChatBox from "../components/ChatBox.jsx";
 
 function Home() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const [agreed, setAgreed] = useState(false);
 
   const sendMessage = async () => {
     const res = await fetch(`${API_URL}/chat`, {
@@ -48,7 +49,7 @@ function Home() {
       <div className="home-content">
         <h1>Welcome to my Page</h1>
       <p>I’m Fahmi Aji Pranata. Explore my portfolio to see what I’ve been building, or chat with my AI assistant to learn more about me.
-It’s powered by Ollama running the Phi-3 model on my trusty (and slightly rusty) server laptop — so give it a moment to think </p>
+         It’s powered by Ollama running the Phi-3 model on my trusty (and slightly rusty) server laptop — so give it a moment to think </p>
       <ChatBox />
     </div>
   </div>
