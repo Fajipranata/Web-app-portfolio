@@ -679,8 +679,8 @@ h1 {
 
 .about-photo{
   position:sticky;
-  top:100px;
-  width:450px;
+  top:80px;
+  width:470px;
   flex-shrink:0;
   margin-right: -140px;
 }
@@ -688,7 +688,6 @@ h1 {
 .about-photo img{
   width:100%;
   height:auto;
-  border-radius:16px;
   display:block;
   object-fit:cover;
 }
