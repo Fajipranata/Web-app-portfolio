@@ -6,20 +6,6 @@ import ChatBox from "../components/ChatBox.jsx";
 
 function Home() {
   const API_URL = import.meta.env.VITE_API_URL;
-  const [agreed, setAgreed] = useState(false);
-
-  const sendMessage = async () => {
-    const res = await fetch(`${API_URL}/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message }),
-    });
-
-    const data = await res.json();
-    setResponse(data.reply);
-  };
  
   return (
     <div className="home-scene">

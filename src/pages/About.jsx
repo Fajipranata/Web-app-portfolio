@@ -1,8 +1,12 @@
 import profile from "../assets/fahmi.png";
 import cloud2 from "../assets/cloudwhite.svg";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 function About() {
+
+  const [shortVersion, setShortVersion] = useState(false);
+
   return (
     <div className="about-page">
        <motion.img
@@ -42,7 +46,7 @@ function About() {
           </p>
 
         <p className="location">
-           Tarumi-ku, Kobe, Hyogo, Japan 
+           📍 Tarumi-ku, Kobe, Hyogo, Japan 🇯🇵
         </p>
 
         <h2>Skills</h2>
@@ -63,8 +67,15 @@ function About() {
           <span>Arduino</span>
         </div>
 
-          <div className="timeline">
+      <div className="timeline-toggle">
+        <button onClick={() => setShortVersion(!shortVersion)}>
+          {shortVersion ? "Show Full Story" : "Summary"}
+        </button>
+      </div>
 
+    <div className="timeline">
+    {!shortVersion ? (            
+          <>
             <div className="timeline-item">
               <div className="timeline-dot"></div>  
               <div className="timeline-content">
@@ -146,11 +157,61 @@ function About() {
                 <p>2025 September,Obtained a visa and returned to Japan to start the job.</p>
                 <p>2025-present, Working at LaShomon as a manager trainee, with a 12-hour daily schedule.</p>
                </div>
-            </div>            
+            </div>
+          </>
+        ):(             
+          <>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>1997</h3>
+                <p>Born in Jakarta, Indonesia.</p>
+              </div>
+            </div>
 
-          </div>
-        </div>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>2015</h3>
+                <p>Studied Automotive Engineering at Astra Polytechnic.</p>
+              </div>
+            </div>
 
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>2019</h3>
+                <p>Moved to Japan to study Japanese in Hokkaido.</p>
+              </div>
+            </div>
+            
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>2021</h3>
+                <p>Graduated Bachelor Degree – University of STMIK Pasim.</p>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>2024</h3>
+                <p>Graduated Master’s Degree – University of Indonesia.</p>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>2025–Present</h3>
+                <p>Manager trainee in Kobe while building software projects.</p>
+              </div>
+            </div>
+          </>
+        )}
+</div>
+    </div>
         <div className="about-photo">
           <img
             src={profile}

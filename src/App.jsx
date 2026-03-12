@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useRef } from "react";

@@ -6,6 +6,7 @@
 
 html {
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -15,6 +16,11 @@ body {
   background: transparent;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
 }
 
 h1, h2, h3, p {
