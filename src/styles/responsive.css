@@ -1,0 +1,25 @@
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .subheadline {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .home-content {
+    padding: 60px 20px;
+  }
+
+}

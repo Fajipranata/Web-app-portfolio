@@ -1,3 +1,4 @@
+import "../styles/projects.css"
 import { useState } from "react";
 import { motion } from "framer-motion";
 import cloud2 from "../assets/cloudwhite.svg";

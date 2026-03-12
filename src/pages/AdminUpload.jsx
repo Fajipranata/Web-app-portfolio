@@ -1,3 +1,4 @@
+import "../styles/adminupload.css"
 import { useState } from "react";
 
 function AdminUpload() {

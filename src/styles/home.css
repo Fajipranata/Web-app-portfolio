@@ -1,0 +1,50 @@
+/*HOME PAGE STYLING*/
+/* HOME SCENE */
+.home-scene {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
+  gap: 30px;
+  text-align: center;
+}
+
+.home-content {
+  position: relative;
+  text-align: center;
+  padding: 400px;
+  z-index: 2;
+}
+
+.home-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #1c3d5a;
+}
+
+.cloud4 {
+  position: absolute;
+  top: 20px;
+  width: 100px;
+  opacity: 0.8;
+  filter: blur(8px)
+}
+
+.cloud5 {
+  position: absolute;
+  top: 300px;
+  width: 150px;
+  opacity: 0.8;
+  filter: blur(8px)
+}
+/*HOME PAGE STYLING*/

@@ -1,3 +1,4 @@
+import "../styles/chatbox.css"
 import { useState } from "react";
 
 function ChatBox() {

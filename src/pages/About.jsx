@@ -1,3 +1,4 @@
+import "../styles/about.css"
 import profile from "../assets/fahmi.png";
 import cloud2 from "../assets/cloudwhite.svg";
 import { motion } from "framer-motion";

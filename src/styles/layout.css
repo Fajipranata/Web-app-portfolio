@@ -1,0 +1,12 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(to bottom, #74c0fc, #a5d8ff, #d0ebff);
+}
+
+.page-container {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}

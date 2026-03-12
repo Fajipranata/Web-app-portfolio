@@ -1,3 +1,4 @@
+import "../styles/landing.css"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion";
 import plane from "../assets/plane.svg";
