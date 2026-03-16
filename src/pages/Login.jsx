@@ -1,37 +1,66 @@
 import "../styles/login.css"
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
+
+  const API_URL = import.meta.env.VITE_API_URL
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
 
-    // TODO: Add real authentication later
-    console.log("Login submitted");
+    try {
 
-    navigate("/admin"); // change if needed
+      const res = await fetch(`${API_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password })
+      })
+
+      const data = await res.json()
+
+      if (data.token) {
+
+        localStorage.setItem("token", data.token)
+
+        navigate("/admin")
+
+      } else {
+
+        alert("Wrong password")
+
+      }
+
+    } catch (err) {
+
+      console.error(err)
+      alert("Login failed")
+
+    }
+
   };
 
   const handleCancel = () => {
-    navigate("/"); // back to landing page
+    navigate("/");
   };
 
   return (
     <div className="login-wrapper">
       <form className="login-card" onSubmit={handleSubmit}>
-        <h2 className="login-title">Admin Login</h2>
 
-        <input
-          type="text"
-          placeholder="Username"
-          className="login-input"
-        />
+        <h2 className="login-title">Admin Login</h2>
 
         <input
           type="password"
           placeholder="Password"
           className="login-input"
+          onChange={(e)=>setPassword(e.target.value)}
         />
 
         <button type="submit" className="login-button">
@@ -45,6 +74,7 @@ function Login() {
         >
           Cancel
         </button>
+
       </form>
     </div>
   );

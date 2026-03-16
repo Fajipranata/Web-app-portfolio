@@ -1,7 +1,9 @@
-import "../styles/adminupload.css"
-import { useState } from "react";
+import "../styles/adminupload.css";
+import { useState, useEffect } from "react";
 
-function AdminUpload() {
+function AdminUpload({ projectData, onClose }) {
+
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [images, setImages] = useState([]);
   const [preview, setPreview] = useState([]);
@@ -15,6 +17,20 @@ function AdminUpload() {
     demo: ""
   });
 
+  // Fill form when editing
+  useEffect(() => {
+    if (projectData) {
+      setProject({
+        title: projectData.title || "",
+        description: projectData.description || "",
+        tech: projectData.tech || "",
+        details: projectData.detail || "",
+        github: projectData.github || "",
+        demo: projectData.demo || ""
+      });
+    }
+  }, [projectData]);
+
   const handleChange = (e) => {
     setProject({
       ...project,
@@ -23,9 +39,7 @@ function AdminUpload() {
   };
 
   const handleImageUpload = (e) => {
-
     const files = Array.from(e.target.files);
-
     setImages(files);
 
     const previewUrls = files.map(file =>
@@ -35,19 +49,51 @@ function AdminUpload() {
     setPreview(previewUrls);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(project);
-    console.log(images);
+    const isEditing = projectData?.id;
 
-    alert("Project uploaded!");
+    const url = isEditing
+      ? `${API_URL}/api/projects/${projectData.id}`
+      : `${API_URL}/api/projects`;
+
+    const method = isEditing ? "PUT" : "POST";
+
+    const formData = new FormData();
+
+    formData.append("title", project.title);
+    formData.append("description", project.description);
+    formData.append("tech", project.tech);
+    formData.append("detail", project.details);
+    formData.append("github", project.github);
+    formData.append("demo", project.demo);
+
+    if (images[0]) {
+      formData.append("image", images[0]);
+    }
+
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      body: formData
+    });
+    const data = await res.json();
+    console.log("Success:", data);
+    alert(isEditing ? "Project updated!" : "Project uploaded!");
+    if (onClose) onClose();
+  } catch (error) {
+    console.error("Upload failed:", error);
+  }
   };
 
   return (
     <div className="upload-page">
 
-      <h1>Add New Project</h1>
+      <h1>{projectData ? "Edit Project" : "Add New Project"}</h1>
 
       <form className="upload-container" onSubmit={handleSubmit}>
 
@@ -84,6 +130,7 @@ function AdminUpload() {
           <input
             name="title"
             placeholder="Project Title"
+            value={project.title}
             onChange={handleChange}
             className="title-input"
           />
@@ -91,18 +138,21 @@ function AdminUpload() {
           <textarea
             name="description"
             placeholder="Short Description"
+            value={project.description}
             onChange={handleChange}
           />
 
           <input
             name="tech"
-            placeholder="Tech Stack (React, FastAPI...)"
+            placeholder="Tech Stack"
+            value={project.tech}
             onChange={handleChange}
           />
 
           <textarea
             name="details"
             placeholder="Project Details"
+            value={project.details}
             onChange={handleChange}
             className="details-box"
           />
@@ -110,19 +160,21 @@ function AdminUpload() {
           <input
             name="github"
             placeholder="Github URL"
+            value={project.github}
             onChange={handleChange}
           />
 
           <input
             name="demo"
             placeholder="Demo URL"
+            value={project.demo}
             onChange={handleChange}
           />
 
         </div>
 
         <button className="publish-btn">
-          Publish Project
+          {projectData ? "Update Project" : "Publish Project"}
         </button>
 
       </form>

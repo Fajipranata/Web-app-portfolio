@@ -21,6 +21,8 @@
   border: 0px solid #1c3d5a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   z-index: 1;
+  align-items: center;
+  padding: 10px;
 }
 
 .project-card:hover {
@@ -43,7 +45,7 @@
   justify-content: center;
 }
 
-.project-info h3 {
+.project-info h2 {
   margin: 0;
   font-size: 20px;
 }
