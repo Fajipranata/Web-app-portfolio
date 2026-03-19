@@ -1,12 +1,16 @@
 import "../styles/adminupload.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function AdminUpload({ projectData, onClose }) {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const [status, setStatus] = useState("");
   const [images, setImages] = useState([]);
   const [preview, setPreview] = useState([]);
+  const navigate = useNavigate();
 
   const [project, setProject] = useState({
     title: "",
@@ -49,29 +53,31 @@ function AdminUpload({ projectData, onClose }) {
     setPreview(previewUrls);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const isEditing = projectData?.id;
+  setStatus("Uploading..."); // ⏳ start loading
 
-    const url = isEditing
-      ? `${API_URL}/api/projects/${projectData.id}`
-      : `${API_URL}/api/projects`;
+  const isEditing = projectData?.id;
 
-    const method = isEditing ? "PUT" : "POST";
+  const url = isEditing
+    ? `${API_URL}/api/projects/${projectData.id}`
+    : `${API_URL}/api/projects`;
 
-    const formData = new FormData();
+  const method = isEditing ? "PUT" : "POST";
 
-    formData.append("title", project.title);
-    formData.append("description", project.description);
-    formData.append("tech", project.tech);
-    formData.append("detail", project.details);
-    formData.append("github", project.github);
-    formData.append("demo", project.demo);
+  const formData = new FormData();
 
-    if (images[0]) {
-      formData.append("image", images[0]);
-    }
+  formData.append("title", project.title);
+  formData.append("description", project.description);
+  formData.append("tech", project.tech);
+  formData.append("detail", project.details);
+  formData.append("github", project.github);
+  formData.append("demo", project.demo);
+
+  images.forEach((img) => {
+    formData.append("images", img);
+  });
 
   try {
     const res = await fetch(url, {
@@ -81,28 +87,30 @@ function AdminUpload({ projectData, onClose }) {
       },
       body: formData
     });
-    const data = await res.json();
-    console.log("Success:", data);
-    alert(isEditing ? "Project updated!" : "Project uploaded!");
-    if (onClose) onClose();
+
+    if (!res.ok) {
+      throw new Error("Upload failed");
+    }
+
+    setStatus("✅ Project uploaded successfully!");
+
+    setTimeout(() => {
+      navigate("/projects"); // redirect
+    }, 1000);
+
   } catch (error) {
-    console.error("Upload failed:", error);
+    console.error(error);
+    setStatus("❌ Upload failed");
   }
-  };
+};
 
   return (
     <div className="upload-page">
-
       <h1>{projectData ? "Edit Project" : "Add New Project"}</h1>
-
       <form className="upload-container" onSubmit={handleSubmit}>
-
         {/* IMAGE UPLOAD */}
-
         <div className="image-upload">
-
           <label className="upload-box">
-
             <input
               type="file"
               multiple
@@ -110,9 +118,7 @@ function AdminUpload({ projectData, onClose }) {
               onChange={handleImageUpload}
               hidden
             />
-
             <p>Drag images or click to upload</p>
-
           </label>
 
           <div className="preview-grid">
@@ -120,7 +126,6 @@ function AdminUpload({ projectData, onClose }) {
               <img key={index} src={img} />
             ))}
           </div>
-
         </div>
 
         {/* TEXT INPUTS */}
@@ -176,7 +181,7 @@ function AdminUpload({ projectData, onClose }) {
         <button className="publish-btn">
           {projectData ? "Update Project" : "Publish Project"}
         </button>
-
+          {status && <p className="upload-status">{status}</p>}
       </form>
 
     </div>

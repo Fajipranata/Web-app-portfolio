@@ -56,7 +56,13 @@
 }
 
 .chat-warning {
-  margin-top: 50px;
+  margin-top: 30px;
+}
+
+.chat-warning h3 {
+  margin-bottom: 10px;
+  color: var(--text-color);
+  transition: color 0.9s ease;
 }
 
 .patient-warning {

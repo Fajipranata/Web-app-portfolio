@@ -21,7 +21,7 @@ button {
   padding: 0.7rem 1.4rem;
   border-radius: 8px;
   border: none;
-  background: #3b82f6;
+  background: #5070a4;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -35,4 +35,17 @@ button:hover {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+:root {
+  --bg: linear-gradient(to bottom, #74c0fc, #a5d8ff, #d0ebff);
+  --text-color: #000000; /* default black for light mode */
+}
+
+.theme-overlay.dark {
+  background: linear-gradient(to bottom, #122f5e, #2c1544 80%);
+}
+
+body.dark {
+  --text-color: #ffffff;
 }

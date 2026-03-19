@@ -61,9 +61,9 @@ const handleDelete = async (id) => {
               setImageIndex(0)
             }}
           >
-            {project.image && (
+            {project.images && (
               <img
-                src={`${API_URL}/${project.image}`}
+                src={`${API_URL}/${project.images?.[0]}`}
                 alt={project.title}
               />
             )}
@@ -71,7 +71,7 @@ const handleDelete = async (id) => {
             <div className="project-info">
               <h2>{project.title}</h2>
               <p>{project.description}</p>
-              <p>{project.tech}</p>
+              <div className="project-tech">{project.tech}</div>
             </div>
 
             {localStorage.getItem("token") && (
@@ -144,7 +144,7 @@ const handleDelete = async (id) => {
 
               <img
                 src={`${API_URL}/${
-                  selectedProject?.images?.[imageIndex] || selectedProject?.image
+                  selectedProject.images?.[imageIndex] || selectedProject?.image
                 }`}
                 alt={selectedProject?.title}
               />

@@ -10,6 +10,7 @@ import Projects from "./pages/Projects"
 import About from "./pages/About"
 import Mystory from "./pages/Mystory"
 import AdminUpload from "./pages/AdminUpload";
+import { useState, useEffect } from "react";
 
 import "./styles/responsive.css"
 
@@ -42,6 +43,12 @@ function App() {
   const location = useLocation();
   const prevPathRef = useRef(location.pathname);
   const prevPath = prevPathRef.current;
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+  }, [theme]);
 
   let axis = "y";
   let direction = 1;
@@ -79,7 +86,20 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <Navbar />
+      <AnimatePresence>
+        {theme === "dark" && (
+          <motion.div
+            key="dark-overlay"
+            className="theme-overlay dark"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+        )}
+      </AnimatePresence>
+
+      <Navbar theme={theme} setTheme={setTheme} />
 
       <div className="page-container">
           <AnimatePresence mode="wait" custom={{ axis, direction }}>
@@ -90,7 +110,7 @@ function App() {
               animate="animate"
               exit="exit"
               custom={{ axis, direction }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
               style={{height: "100%", overflowY: "auto" }}
             >
             <Routes location={location}>

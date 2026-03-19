@@ -17,6 +17,11 @@
   max-width:700px;
 }
 
+.about-content h1, h2, h3, p {
+  color: var(--text-color);
+  transition: color 0.9s ease;
+}
+
 .about-photo{
   position:sticky;
   top:80px;
@@ -61,6 +66,7 @@ section{
 
 /*TIMELINE STYLING*/
 .timeline{
+  top: 2px;
   position:relative;
   margin-top:40px;
   margin-bottom: 40px;
@@ -85,7 +91,8 @@ section{
 .timeline-dot{
   position:absolute;
   left:0;
-  top:6px;
+  top: 2px;
+  left: 1px;
   width:16px;
   height:16px;
   background:#111;
@@ -97,11 +104,15 @@ section{
 .timeline-content h3{
   margin:0;
   font-size:18px;
+  color: var(--text-color);
+  transition: color 0.9s ease;
 }
 
 .timeline-content p{
   margin:6px 0 0;
   color:#555;
+  color: var(--text-color);
+  transition: color 0.9s ease;
 }
 
 .timeline-toggle{

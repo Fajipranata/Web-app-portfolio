@@ -31,6 +31,13 @@
   font-size: 48px;
   margin-bottom: 20px;
   color: #1c3d5a;
+  color: var(--text-color);
+  transition: color 0.9s ease;
+}
+
+.home-content p {
+  color: var(--text-color);
+  transition: color 0.9s ease;
 }
 
 .cloud4 {

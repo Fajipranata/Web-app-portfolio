@@ -7,9 +7,15 @@
   z-index: 1;
 }
 
+.projects-container h1 {
+  color: var(--text-color);
+  transition: color 0.9s ease;
+}
+
 .project-card {
   display: flex;
   align-items: center;   /* fix */
+  text-align: center;
   justify-content: space-between;
   text-align: center;
   background: transparent;
@@ -18,7 +24,10 @@
   margin-bottom: 20px;
   transition: all 0.25s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  color: var(--text-color);
+  transition: color 0.9s ease;
 }
+
 .project-card:hover {
   transform: scale(1.03);
 }
@@ -36,7 +45,10 @@
 .project-info {
   flex: 1;
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  max-width: calc(100% - 250px); /* leave room for buttons */
+  word-wrap: break-word;
 }
 
 .project-info h2 {
@@ -46,11 +58,24 @@
 
 .project-info p {
   margin-top: 8px;
-  color: rgb(0, 0, 0);
+  color: var(--text-color);
+  overflow-wrap: anywhere;
 }
 
-.project-tech{
-  margin: 10px;
+.project-tech {
+  display: inline-block;
+  background-color: rgba(0,0,0,0.1); /* light overlay for light mode */
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+body.dark .project-tech {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .Edit-delete-button {
@@ -76,7 +101,7 @@
 }
 
 .project-modal {
-  background: #111;
+  background: #8692f4;
   padding: 40px;
   border-radius: 12px;
   max-width: 700px;

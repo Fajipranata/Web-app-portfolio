@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(to bottom, #74c0fc, #a5d8ff, #d0ebff);
+  background: var(--bg);
+  transition: background 0.8s ease;
+  position: relative;
+  z-index: 20;
 }
 
 .page-container {
@@ -10,3 +13,14 @@
   overflow: hidden;
   flex: 1;
 }
+
+.theme-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+

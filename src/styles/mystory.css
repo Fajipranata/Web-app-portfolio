@@ -5,6 +5,11 @@
   margin: auto;
 }
 
+.story-container h1{
+  color: var(--text-color);
+  transition: color 0.9s ease;
+}
+
 .story-title{
   text-align: center;
 }
