@@ -132,26 +132,38 @@
         word-wrap: break-word;
     }
 
-    .modal-content {
-        padding: 20px;
-        width: 95%;
+    /*PROJECT MODAL*/
+    .project-modal {
+        text-align: center; /* center all text inside modal */
+        margin: 15px;       /* smaller margin on mobile */
+    }
+
+    .project-modal p,
+    .project-modal h2,
+    .project-modal h3,
+    .project-tech {
+        text-align: center; /* center headings, paragraphs, and tech tags */
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+      .project-links {
+        flex-direction: column; /* stack buttons vertically */
+        align-items: center;    /* center buttons */
+        gap: 10px;              /* spacing between buttons */
     }
 
     .slideshow img {
         max-height: 200px;
     }
 
-    .modal-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-
     .slide-btn {
         font-size: 24px;
         padding: 12px 16px;
     }
-
-    
 }
 
 @media (max-width: 480px) {

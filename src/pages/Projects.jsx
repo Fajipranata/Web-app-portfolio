@@ -110,7 +110,6 @@ const handleDelete = async (id) => {
       )}
 
       {selectedProject && (
-
         <div
           className="project-modal-overlay"
           onClick={() => setSelectedProject(null)}
@@ -120,13 +119,6 @@ const handleDelete = async (id) => {
             className="project-modal"
             onClick={(e) => e.stopPropagation()}
           >
-
-            <button
-              className="modal-close"
-              onClick={() => setSelectedProject(null)}
-            >
-              ✕
-            </button>
 
             <div className="image-slider">
               <button
@@ -163,6 +155,7 @@ const handleDelete = async (id) => {
               </button>
             </div>
 
+            <div className="project-modal">
             <h2>{selectedProject.title}</h2>
 
             <p>{selectedProject.description}</p>
@@ -174,8 +167,14 @@ const handleDelete = async (id) => {
             <p>{selectedProject.detail}</p>
 
             <div className="project-links">
+              <button>
               <a href={selectedProject.github} target="_blank">Github</a>
+              </button>
+
+              <button>
               <a href={selectedProject.demo} target="_blank">Live Demo</a>
+              </button>
+            </div>
             </div>
 
           </div>
