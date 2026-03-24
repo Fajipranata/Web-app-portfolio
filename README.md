@@ -4,6 +4,7 @@
 
 This project demonstrates how to integrate a self-hosted language model with a modern full-stack architecture, including a React frontend, Node.js API layer, PostgreSQL database, and a Python-based AI service.
 
+```
 ## Features
 AI System
 Interactive AI chat assistant powered by a local LLM (Phi-3 via Ollama)
@@ -12,7 +13,9 @@ Chat history handling with role mapping (user / assistant)
 AI warm-up system to reduce cold start latency
 Node.js proxy layer (Express) connecting frontend → FastAPI → Ollama
 User warning system for slow responses
+```
 
+```
 ## Frontend & UI
 React-based responsive UI
 Smooth page transitions using Framer Motion
@@ -22,7 +25,8 @@ Click-outside and close button modal UX
 Stable image container (prevents layout shift)
 Lazy-loaded images for performance
 Scroll-based storytelling page (My Story)
-
+```
+```
 ## Admin Upload Panel (Connected to Backend)
 Custom admin upload page (protected route ready)
 Modern form UI inspired by content upload platforms
@@ -30,7 +34,8 @@ Structured input layout (aligned, consistent spacing)
 Image upload with preview system
 Form connected to backend API (POST request)
 Ready for full CRUD operations (Create implemented)
-
+```
+```
 ## About Page (Modern CV Design)
 Two-column CV layout (content + sticky photo)
 Responsive mobile layout (column stack)
@@ -39,12 +44,14 @@ Toggle system:
 Quick Summary
 Full Story
 Clean typography and readable hierarchy
-
+```
+```
 ## UX Decisions
 Sticky → static layout switch for mobile responsiveness
 Timeline toggle for recruiter-friendly reading
 Content-first design for clarity and accessibility
-
+```
+```
 ## Backend & Infrastructure
 Main Backend (Node.js / Express)
 REST API for project management
@@ -55,16 +62,19 @@ AI Backend (FastAPI)
 Handles AI requests and prompt construction
 Communicates with Ollama for LLM inference
 Optimized request pipeline and response handling
-
+```
+```
 ## Database
 PostgreSQL database integration
 Structured project storage (title, description, links, image, timestamp)
 Ordered queries (latest projects first)
-
+```
+```
 ## Architecture Pattern
 Multi-service architecture (microservice-style)
 Node.js acts as API gateway between frontend and AI backend
-
+```
+```
 ## Project Showcase (Dynamic Data)
 Projects loaded dynamically from PostgreSQL
 API-driven project rendering
@@ -73,12 +83,13 @@ Modal system with:
   Image slideshow
   GitHub + Demo links
   Project details
-
+```
+```
 ## UX Decisions
 Modal-based interaction for faster navigation
 Fixed layout to prevent UI shifting
 Clean separation of data and UI
-
+```
 ```
 Architecture
 React (Frontend)
@@ -91,7 +102,7 @@ Node.js / Express (API Gateway)
                     ↓
               Local LLM (Phi-3)
 ```
-
+```
 ## Tech Stack
 Frontend
 React
@@ -142,7 +153,7 @@ POST /api/projects
 
 ## AI Chat API
 POST /api/chat
-
+```
 ```
 Request Example
 {
@@ -158,7 +169,7 @@ Response Example
 }
 Performance Considerations
 ```
-
+```
 ## Problems Faced
 Cold start delay for local LLM
 Slow inference (~40–120 seconds)
@@ -194,7 +205,7 @@ Scroll-based storytelling
 Intersection Observer animations
 Alternating layout
 Mobile-optimized stacking
-
+```
 ```
 Project Structure
 project-root/
